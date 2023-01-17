@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import { AppLayout, AuthLayout } from "./scenes/global/Layout";
+import Login from "./scenes/authentication/login";
+import SignIn from "./scenes/authentication/sigin";
+import Dashboard from "./scenes/dashboard";
+// import Sidebar from "./scenes/global/Sidebar";
+// import Team from "./scenes/Team";
+// import Invoices from "./scenes/Invoices";
+// import Contacts from "./scenes/Contacts";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<AppLayout/>}>
+        <Route index path="/dashboard" element={<Dashboard />} />
+      </Route>
+      <Route path="/" element={<AuthLayout />}>
+        <Route index path="/login" element={<Login />} />
+        <Route path="/signin" element={<SignIn />} />
+      </Route>
+    </Routes>
   );
 }
 
